@@ -91,5 +91,40 @@ function bannerMove() {
 	}, 3000)
 	
 }
+var oHosdjs=document.querySelector("#hot1-1-2");
+var oAllSe = 3600;
+	//oAllSe--;
+	function tick(){
+		//有小数取整 01 00：59：34
+		var oHours = parseInt(oAllSe / 3600);
+		if(oAllSe / 60 == 60){
+			var oMinutes = '0'
+		}else{
+			var oMinutes = parseInt(oAllSe / 60)
+		}
+		var oSeconds = oAllSe % 60;
+
+	oHosdjs.innerHTML = addZero(oHours) +':'+ addZero(oMinutes) + ':' + addZero(oSeconds)
+
+	};
+	tick();
+
+	setInterval(function(){
+		oAllSe--;
+		tick();	
+	},1000)
+	
+	
+
+
+
+	//封装补零
+	function addZero(obj){
+		if(obj < 10){
+			return '0' + obj;
+		}else{
+			return '' + obj;
+		}
+	}
 
 
